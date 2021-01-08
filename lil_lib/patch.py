@@ -17,7 +17,7 @@ def __override_getaddrinfo_ipv4(*args, **kwargs) -> list[tuple[socket.AddressFam
 
 def __override_getaddrinfo_ipv6(*args, **kwargs) -> list[tuple[socket.AddressFamily, socket.SocketKind, int, str, tuple[str, int, int, int, ]]]:
     try:
-        return socket.getaddrinfo(*args, **kwargs, family=socket.AF_INET)
+        return socket.getaddrinfo(*args, **kwargs, family=socket.AF_INET6)
     except TypeError:
         return __hardcode_getaddrinfo_ipv6_override_please_dont_change_syscall_yikes(*args, **kwargs)
 
